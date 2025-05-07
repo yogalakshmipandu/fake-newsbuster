@@ -90,24 +90,4 @@ Our solution stands out through:
 - **Real-Time Scoring**: Provides instant credibility assessment while browsing.
 - **Visual Feedback**: Clear color-coding helps users quickly assess article credibility.
 
-## Ideathon Context
-
-This project was developed for [Ideathon Name] with the goal of combating misinformation in the digital age. Our team focused on creating a practical solution that can be easily adopted by everyday internet users.
-
-## Future Enhancements
-
-1. Machine learning integration for better pattern recognition
-2. Social media integration for broader reach
-3. Community-driven source verification
-4. Historical credibility tracking
-
-## Team
-
-- [Team Member 1] - Backend Development
-- [Team Member 2] - Frontend Development
-- [Team Member 3] - Graph Database Design
-- [Team Member 4] - UI/UX Design
-
----
-
 *"In a world of information overload, Fake News Buster helps you separate fact from fiction."* 
