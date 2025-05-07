@@ -43,27 +43,6 @@ Fake News Buster is a Chrome extension that:
    - Clear visual feedback
    - Detailed credibility breakdown
 
-## Setup Instructions
-
-1. **Install Dependencies**
-   ```bash
-   pip install flask==2.0.0 beautifulsoup4 neo4j
-   ```
-
-2. **Set Up Neo4j**
-   - Install Neo4j Desktop
-   - Create a new database
-   - Update connection details in `backend/graph.py`
-
-3. **Start Backend**
-   ```bash
-   python backend/app.py
-   ```
-
-4. **Load Chrome Extension**
-   - Open Chrome and go to `chrome://extensions/`
-   - Enable "Developer mode"
-   - Click "Load unpacked" and select the `extension/` directory
 
 ## Demo Scenario
 
@@ -85,7 +64,7 @@ Result:
 
 ## Innovation
 
-Our solution stands out through:
+ My solution stands out through:
 - **Graph-Based Analysis**: Unlike traditional fact-checking tools that rely on keyword matching, we use Neo4j to map relationships between sources and identify patterns of misinformation.
 - **Real-Time Scoring**: Provides instant credibility assessment while browsing.
 - **Visual Feedback**: Clear color-coding helps users quickly assess article credibility.
