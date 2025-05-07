@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Buster - Web App</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/seedrandom/3.0.5/seedrandom.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="icon" href="icon128.png">
+    <!-- Add Font Awesome for icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body class="bg-gradient-to-b from-gray-50 to-gray-100 min-h-screen">
+    <div class="container mx-auto px-4 py-8">
+        <!-- Header -->
+        <header class="text-center mb-12">
+            <div class="flex items-center justify-center mb-4">
+                <img src="icon128.png" alt="News Buster Logo" class="w-16 h-16">
+            </div>
+            <h1 class="text-3xl font-bold text-green-600">News Buster</h1>
+            <p class="text-gray-600 mt-2">Your AI-powered news credibility checker</p>
+        </header>
+
+        <!-- Main Content -->
+        <main class="max-w-2xl mx-auto">
+            <!-- URL Input Section -->
+            <div class="bg-white rounded-xl shadow-sm p-6 mb-8">
+                <div class="space-y-4">
+                    <input type="text" 
+                           id="urlInput" 
+                           placeholder="Paste article URL here" 
+                           class="w-full px-4 py-3 border border-gray-200 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent transition-all duration-200">
+                    <button id="checkButton" 
+                            class="w-full bg-blue-500 text-white py-4 px-4 rounded-lg hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-all duration-200 text-lg font-semibold">
+                        Check Article
+                    </button>
+                </div>
+            </div>
+
+            <!-- Loading State -->
+            <div id="loading" class="hidden text-center py-8">
+                <div class="animate-spin rounded-full h-12 w-12 border-4 border-blue-500 border-t-transparent mx-auto"></div>
+                <p class="mt-4 text-gray-600 font-medium">Analyzing article...</p>
+                <p class="text-sm text-gray-500 mt-2">This may take a few seconds</p>
+            </div>
+
+            <!-- Results Section -->
+            <div id="results" class="hidden">
+                <div class="bg-white rounded-xl shadow-sm p-6">
+                    <!-- Score Circle -->
+                    <div class="flex flex-col items-center justify-center mb-8">
+                        <div id="scoreCircle" class="w-32 h-32 rounded-full flex items-center justify-center mx-auto text-white text-5xl font-bold shadow-lg">
+                            <span id="score" class="score-text">0</span>
+                        </div>
+                        <p class="mt-4 text-gray-600 font-medium text-xl">Credibility Score</p>
+                    </div>
+
+                    <!-- Article Details -->
+                    <div class="space-y-4 mb-8">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-sm text-blue-600 font-semibold mb-2">Title</p>
+                            <p id="title" class="text-gray-800 font-medium"></p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-sm text-blue-600 font-semibold mb-2">Domain</p>
+                            <p id="domain" class="text-gray-800 font-medium"></p>
+                        </div>
+                    </div>
+
+                    <!-- Analysis -->
+                    <div class="mb-8">
+                        <h2 class="text-xl font-semibold text-green-600 mb-4">Analysis</h2>
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <p id="analysis" class="text-gray-700"></p>
+                        </div>
+                    </div>
+
+                    <!-- Credibility Indicators -->
+                    <div>
+                        <h2 class="text-xl font-semibold text-green-600 mb-4">Credibility Indicators</h2>
+                        <ul id="indicators" class="space-y-4"></ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Error Message -->
+            <div id="error" class="hidden">
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                    <div class="flex items-center">
+                        <span class="text-red-500 mr-2">⚠️</span>
+                        <p class="text-red-600 font-medium">Error analyzing article. Please try again.</p>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- Footer -->
+        <footer class="text-center mt-12 text-gray-500 text-sm">
+            <p>© 2024 News Buster. All rights reserved.</p>
+        </footer>
+    </div>
+
+    <!-- Add Chatbot Button -->
+    <div class="fixed bottom-4 right-4">
+        <button id="chatbotToggle" class="bg-blue-500 text-white p-4 rounded-full shadow-lg hover:bg-blue-600 transition-colors">
+            <i class="fas fa-comments text-xl"></i>
+        </button>
+    </div>
+
+    <!-- Chatbot Interface -->
+    <div id="chatbot" class="fixed bottom-20 right-4 w-80 bg-white rounded-lg shadow-xl hidden">
+        <div class="p-4 border-b border-gray-200">
+            <div class="flex justify-between items-center">
+                <h3 class="font-semibold text-gray-800">News Buster Assistant</h3>
+                <button id="closeChatbot" class="text-gray-500 hover:text-gray-700">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+        </div>
+        
+        <div id="chatMessages" class="h-80 overflow-y-auto p-4 space-y-4">
+            <div class="bg-blue-50 p-3 rounded-lg">
+                <p class="text-sm text-gray-700">Hello! I'm your News Buster assistant. How can I help you today?</p>
+            </div>
+        </div>
+        
+        <div class="p-4 border-t border-gray-200">
+            <div class="flex space-x-2">
+                <input type="text" id="userInput" 
+                       class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+                       placeholder="Type your message...">
+                <button id="sendMessage" 
+                        class="bg-blue-500 text-white px-4 py-2 rounded-lg hover:bg-blue-600">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+    <script src="chatbot.js"></script>
+</body>
+</html> 

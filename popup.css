@@ -1,0 +1,256 @@
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    margin: 0;
+    padding: 0;
+    min-width: 300px;
+    min-height: 400px;
+    overflow-y: auto;
+}
+
+.container {
+    max-width: 100%;
+    padding: 0;
+}
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+h2 {
+    color: #444;
+    font-size: 18px;
+    margin: 15px 0 10px;
+}
+
+.loading {
+    text-align: center;
+    padding: 20px;
+}
+
+.spinner {
+    border: 4px solid #f3f3f3;
+    border-top: 4px solid #3498db;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    animation: spin 1s linear infinite;
+    margin: 0 auto 10px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.score-container {
+    text-align: center;
+    margin: 20px 0;
+}
+
+.score-circle {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #3498db;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+}
+
+.score-circle span {
+    color: white;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.score-label {
+    margin-top: 10px;
+    color: #666;
+}
+
+.detail-item {
+    margin: 10px 0;
+    display: flex;
+    justify-content: space-between;
+}
+
+.label {
+    color: #666;
+    font-weight: 500;
+}
+
+.value {
+    color: #333;
+}
+
+.analysis {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #eee;
+}
+
+.analysis p {
+    color: #444;
+    line-height: 1.5;
+}
+
+.error {
+    color: #e74c3c;
+    text-align: center;
+    padding: 20px;
+}
+
+.hidden {
+    display: none;
+}
+
+/* Input and button styles */
+input[type="text"] {
+    width: 100%;
+    box-sizing: border-box;
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+button {
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+/* Responsive text */
+@media (max-width: 320px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+    
+    .text-2xl {
+        font-size: 1.25rem;
+    }
+}
+
+/* Ensure proper scrolling */
+#results {
+    max-height: calc(400px - 120px);
+    overflow-y: auto;
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+    width: 6px;
+}
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #cbd5e1;
+    border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #94a3b8;
+}
+
+#indicators li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 8px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#indicators li:hover {
+    background-color: #f3f4f6;
+    transform: translateX(4px);
+}
+
+#indicators li span:first-child {
+    font-size: 1.25rem;
+    line-height: 1;
+    min-width: 24px;
+    text-align: center;
+}
+
+.text-green-600 {
+    color: #059669;
+}
+
+.text-red-600 {
+    color: #dc2626;
+}
+
+/* Score circle animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+#scoreCircle {
+    animation: pulse 2s infinite;
+    position: relative;
+}
+
+.score-text {
+    font-size: 2.5rem;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Loading animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Responsive adjustments */
+@media (max-width: 320px) {
+    body {
+        padding: 12px;
+    }
+    
+    .container {
+        padding: 0 8px;
+    }
+} 

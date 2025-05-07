@@ -1,0 +1,188 @@
+/* Base styles */
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+    min-height: 100vh;
+}
+
+/* Container styles */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* Input and button styles */
+input[type="text"] {
+    transition: all 0.3s ease;
+}
+
+input[type="text"]:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.1);
+}
+
+button {
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    transform: translateY(-1px);
+}
+
+/* Score circle and text styles */
+#scoreCircle {
+    animation: pulse 2s infinite;
+    position: relative;
+}
+
+.score-text {
+    font-size: 3rem;
+    font-weight: 800;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Score circle animation */
+@keyframes pulse {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+/* Indicator styles */
+#indicators li {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px;
+    background-color: #f9fafb;
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+#indicators li:hover {
+    background-color: #f3f4f6;
+    transform: translateX(4px);
+}
+
+#indicators li span:first-child {
+    font-size: 1.25rem;
+    line-height: 1;
+    min-width: 24px;
+    text-align: center;
+}
+
+.text-green-600 {
+    color: #059669;
+}
+
+.text-red-600 {
+    color: #dc2626;
+}
+
+/* Loading animation */
+@keyframes spin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+.animate-spin {
+    animation: spin 1s linear infinite;
+}
+
+/* Results animation */
+#results {
+    animation: fadeIn 0.5s ease-out;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Responsive adjustments */
+@media (max-width: 640px) {
+    .container {
+        padding: 0 1rem;
+    }
+    
+    #scoreCircle {
+        width: 24rem;
+        height: 24rem;
+    }
+    
+    .score-text {
+        font-size: 2.5rem;
+    }
+}
+
+/* Chatbot Styles */
+#chatbot {
+    transition: all 0.3s ease;
+    z-index: 1000;
+}
+
+#chatbot.hidden {
+    transform: translateY(20px);
+    opacity: 0;
+    pointer-events: none;
+}
+
+#chatMessages {
+    scrollbar-width: thin;
+    scrollbar-color: #CBD5E0 #EDF2F7;
+}
+
+#chatMessages::-webkit-scrollbar {
+    width: 6px;
+}
+
+#chatMessages::-webkit-scrollbar-track {
+    background: #EDF2F7;
+    border-radius: 3px;
+}
+
+#chatMessages::-webkit-scrollbar-thumb {
+    background-color: #CBD5E0;
+    border-radius: 3px;
+}
+
+/* Message animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+#chatMessages div {
+    animation: fadeIn 0.3s ease;
+}
+
+/* Input focus styles */
+#userInput:focus {
+    box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+}
+
+/* Send button hover effect */
+#sendMessage:hover {
+    transform: scale(1.05);
+    transition: transform 0.2s ease;
+} 
