@@ -1,6 +1,6 @@
 # Fake News Buster 🕵️‍♂️
 
-A Chrome extension that helps users identify potentially fake news by analyzing article credibility using graph-based scoring.
+A Chrome extension and an app that helps users identify potentially fake news by analyzing article credibility using graph-based scoring.
 
 ## Problem Statement
 
